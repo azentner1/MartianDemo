@@ -16,6 +16,6 @@ interface PostsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun updateOrInsert(post: Post)
 
-    @Query("SELECT * FROM posts ORDER BY id DESC")
+    @Query("SELECT * FROM posts")
     fun getPosts(): LiveData<List<Post>>
 }
