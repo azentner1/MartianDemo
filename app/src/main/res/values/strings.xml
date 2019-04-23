@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MartianDemo</string>
+    <string name="posts">Posts</string>
+    <string name="album">Album</string>
+    <string name="users">Users</string>
+    <string name="todo">Todo</string>
+    <string name="title">Title</string>
+    <string name="post_body">Post body</string>
+    <string name="comments">Comments</string>
+    <string name="create_post">Create post</string>
+    <string name="albums">Albums</string>
+    <string name="album_photos">Album photos</string>
+    <string name="photo">Photo</string>
+    <string name="name">Name</string>
+    <string name="comment_body">Comment body</string>
+    <string name="e_mail">E-mail</string>
+    <string name="loading_users">Loading users</string>
+    <string name="loading_albums">Loading albums</string>
+    <string name="loading_posts">Loading posts</string>
+    <string name="loading_photos">Loading photos</string>
+    <string name="loading_todos">Loading todos</string>
+    <string name="creating_post">Creating post</string>
+    <string name="creating_comment">Creating comment</string>
+    <string name="create_comment">Create comment</string>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:textColor="@color/dark"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/txtUserEmail"/>
+
+    <TextView
+        android:id="@+id/txtUserUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:textSize="14sp"
+        android:textColor="@color/dark_gray"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtUserName"
+        android:layout_toStartOf="@+id/txtUserWebsite"/>
+
+    <TextView
+        android:id="@+id/txtUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="6dp"
+        android:textSize="14sp"
+        android:textColor="@color/mid_gray"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/txtUserWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="6dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:textColor="@color/light_gray"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/txtUserEmail"/>
+</RelativeLayout>

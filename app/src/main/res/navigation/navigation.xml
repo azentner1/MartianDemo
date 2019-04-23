@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation" app:startDestination="@id/fragmentPosts">
+
+    <fragment android:id="@+id/fragmentAlbums"
+              android:name="com.example.martiandemo.ui.albums.FragmentAlbums"
+              android:label="FragmentAlbums">
+        <action
+            android:id="@+id/action_fragmentAlbums_to_fragmentPhotos"
+            app:destination="@id/fragmentPhotos" />
+    </fragment>
+    <fragment android:id="@+id/fragmentPosts"
+              android:name="com.example.martiandemo.ui.posts.FragmentPosts"
+              android:label="FragmentPosts">
+        <action
+            android:id="@+id/action_fragmentPosts_to_fragmentComments"
+            app:destination="@id/fragmentComments" />
+        <action
+            android:id="@+id/action_fragmentPosts_to_fragmentCreatePost"
+            app:destination="@id/fragmentCreatePost" />
+    </fragment>
+    <fragment android:id="@+id/fragmentUsers"
+              android:name="com.example.martiandemo.ui.users.FragmentUsers"
+              android:label="FragmentUsers">
+        <action
+            android:id="@+id/action_fragmentUsers_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPhotos"
+        android:name="com.example.martiandemo.ui.albums.photo_list.FragmentPhotoList"
+        android:label="fragment_photos"
+        tools:layout="@layout/fragment_photo_list" >
+        <argument
+            android:name="albumId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_fragmentPhotos_to_fragmentPhoto"
+            app:destination="@id/fragmentPhoto" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentComments"
+        android:name="com.example.martiandemo.ui.posts.comments.FragmentComments"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" >
+        <argument
+            android:name="postId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_fragmentComments_to_fragmentCreateComment"
+            app:destination="@id/fragmentCreateComment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPhoto"
+        android:name="com.example.martiandemo.ui.albums.photo_list.photo.FragmentPhoto"
+        android:label="fragment_photo"
+        tools:layout="@layout/fragment_photo" >
+        <argument
+            android:name="photoUrl"
+            app:argType="string"
+            android:defaultValue='""' />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTodo"
+        android:name="com.example.martiandemo.ui.users.todos.FragmentTodo"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" >
+        <argument
+            android:name="userId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCreatePost"
+        android:name="com.example.martiandemo.ui.posts.create.FragmentCreatePost"
+        android:label="fragment_create_post"
+        tools:layout="@layout/fragment_create_post" />
+    <fragment
+        android:id="@+id/fragmentCreateComment"
+        android:name="com.example.martiandemo.ui.posts.comments.create.FragmentCreateComment"
+        android:label="FragmentCreateComment" >
+        <argument
+            android:name="postId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

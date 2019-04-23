@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/txtCommentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="name"
+        android:textColor="@color/dark"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"/>
+
+
+    <TextView
+        android:id="@+id/txtCommentBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="body"
+        android:textColor="@color/dark_gray"
+        android:textSize="14sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtCommentName"
+        android:layout_toStartOf="@+id/txtCommentEmail"/>
+
+
+    <TextView
+        android:id="@+id/txtCommentEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="email"
+        android:textColor="@color/mid_gray"
+        android:textSize="14sp"
+        android:layout_below="@+id/txtCommentName"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>
