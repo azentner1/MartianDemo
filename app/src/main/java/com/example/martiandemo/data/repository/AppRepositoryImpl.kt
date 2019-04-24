@@ -1,13 +1,11 @@
 package com.example.martiandemo.data.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.martiandemo.data.api.ApiDataSource
 import com.example.martiandemo.data.db.dao.*
 import com.example.martiandemo.data.db.models.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class AppRepositoryImpl(
     private val apiDataSource: ApiDataSource,
@@ -42,7 +40,18 @@ class AppRepositoryImpl(
         apiDataSource.fetchedComments.observeForever {
             saveFetchedComments(it)
         }
+
+        apiDataSource.createdPost.observeForever {
+            saveFetchedPost(it)
+        }
+
+        apiDataSource.createdComment.observeForever {
+            saveFetchedComment(it)
+        }
     }
+
+    private val createdComment = MutableLiveData<Comment>()
+    private val createdPost = MutableLiveData<Post>()
 
     override suspend fun getUsers(): LiveData<List<User>> {
         fetchUserData()
@@ -147,18 +156,37 @@ class AppRepositoryImpl(
         }
     }
 
-    override suspend fun createPost(post: Post) {
-        apiDataSource.createPost(post)
+
+
+    override fun saveFetchedPost(post: Post) {
         GlobalScope.launch(Dispatchers.IO) {
             postsDao.updateOrInsert(post)
         }
+        createdPost.value = post
+        getSavedPost()
     }
 
+    override fun getSavedPost() : LiveData<Post> {
+        return createdPost
+    }
 
-    override suspend fun createComment(comment: Comment) {
-        apiDataSource.createComment(comment)
+    override suspend fun savePost(post: Post) {
+        apiDataSource.createPost(post)
+    }
+
+    override fun saveFetchedComment(comment: Comment) {
         GlobalScope.launch(Dispatchers.IO) {
             commentsDao.updateOrInsert(comment)
         }
+        createdComment.value = comment
+        getSavedComment()
+    }
+
+    override fun getSavedComment() : LiveData<Comment> {
+        return createdComment
+    }
+
+    override suspend fun saveComment(comment: Comment) {
+        apiDataSource.createComment(comment)
     }
 }

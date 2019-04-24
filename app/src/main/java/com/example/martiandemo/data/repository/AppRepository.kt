@@ -18,9 +18,17 @@ interface AppRepository {
 
     suspend fun getComments(postId: Int): LiveData<List<Comment>>
 
-    suspend fun createPost(post: Post)
+    suspend fun savePost(post: Post)
 
-    suspend fun createComment(comment: Comment)
+    fun saveFetchedPost(post: Post)
+
+    fun getSavedPost() : LiveData<Post>
+
+    suspend fun saveComment(comment: Comment)
+
+    fun saveFetchedComment(comment: Comment)
+
+    fun getSavedComment() : LiveData<Comment>
 
 
 }

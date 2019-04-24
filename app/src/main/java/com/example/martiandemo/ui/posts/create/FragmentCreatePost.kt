@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -14,6 +15,8 @@ import androidx.navigation.ui.NavigationUI
 import com.example.martiandemo.R
 import com.example.martiandemo.ui.base.ScopedFragment
 import kotlinx.android.synthetic.main.fragment_create_post.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -43,11 +46,18 @@ class FragmentCreatePost : ScopedFragment(), KodeinAware {
     fun initUi() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = getString(R.string.create_post)
         fabCreatePost.setOnClickListener {
-            groupCreatingPost.visibility = View.VISIBLE
-            viewModel.createPost(etCreatePostTitle.text.toString(), etCreatePostBody.text.toString())
-            groupCreatingPost.visibility = View.GONE
-            //Not ideal, but due to time constraints...
-            activity?.supportFragmentManager?.popBackStack()
+            savePost()
         }
+    }
+
+    private fun savePost() = launch(Dispatchers.Main) {
+        groupCreatingPost.visibility = View.VISIBLE
+        viewModel.setPostData(etCreatePostTitle.text.toString(), etCreatePostBody.text.toString())
+        viewModel.createComment()
+        val comment = viewModel.createdPost.await()
+        comment.observe(this@FragmentCreatePost, Observer {
+            groupCreatingPost.visibility = View.GONE
+            activity?.supportFragmentManager?.popBackStack()
+        })
     }
 }

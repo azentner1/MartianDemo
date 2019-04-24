@@ -18,5 +18,9 @@ interface CommentsDao {
     fun updateOrInsert(comment: Comment)
 
     @Query("SELECT * FROM comments WHERE postId = :post_id ORDER BY id DESC")
-    fun getComments(post_id: Int) : LiveData<List<Comment>>
+    fun getComments(post_id: Int): LiveData<List<Comment>>
+
+    @Query("SELECT * FROM comments WHERE id = :comment_id")
+    fun getComment(comment_id: Int): LiveData<Comment>
+
 }
